@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+	<h1>树莓派图书馆在线服务中心</h1>
+    <p>请输入你要搜索的书本名称：</p>
+    <form action="" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

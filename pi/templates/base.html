@@ -1,0 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="ch">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>Raspberry Pi</h1>
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <hr>
+    <p>欢迎来到这个由 Raspberry Pi 搭建的网站</p>
+    {% endblock %}
+</body>
+</html>

@@ -1,11 +1,14 @@
 # coding=utf-8
 from django.http import HttpResponse
 
+from django.shortcuts import render_to_response
 import datetime
 import os
 import sys
 import commands
 import string
+import RPi.GPIO as GPIO  
+import time 
 
 default_encoding = 'utf-8'
 if sys.getdefaultencoding() != default_encoding:
@@ -14,30 +17,17 @@ if sys.getdefaultencoding() != default_encoding:
     pass
 
 def hello(request):
-    return HttpResponse('Welcome to my pi site')
+    return render_to_response('dateapp/home.html', locals())
 
 def current_datetime(request):
     now = datetime.datetime.now()
-    html = "<html><body>现在北京时间是 %s.</body></html>" % now
-    return HttpResponse(html)
+    return render_to_response('dateapp/time.html', locals())
 
 def getCPUtemperature(request):
     res = os.popen('vcgencmd measure_temp').readline()
     CPUtemperature = res.replace("temp=","").replace("'C\n","")
-    html = "<html><body>现在CPU的温度是 %s 摄氏度.</body></html>" % CPUtemperature
-    return HttpResponse(html)
+    return render_to_response('dateapp/temperature.html', locals())
 
-
-def check_cpu(request, temperature):
-
-    res = os.popen('vcgencmd measure_temp').readline()
-    CPUtemperature = res.replace("temp=","").replace("'C\n","")
-
-    if  float(CPUtemperature) > float(temperature) :
-        html = "<html><body>现在CPU的温度大于 %s 摄氏度.</body></html>" % temperature
-    else :
-        html = "<html><body>现在CPU的温度小于 %s 摄氏度.</body></html>" % temperature
-    return HttpResponse(html)
 
 def check_year(request,year):
     try:
@@ -53,6 +43,36 @@ def check_year(request,year):
         html = "<html><body>%s年不是闰年,快吃药!<html><body>" % year
     return HttpResponse(html)
 
+  
+def ledset(request,ledflag):
+    GPIO.setwarnings(False)
+    led = 11 
+    GPIO.setmode(GPIO.BOARD)  
+    # need to set up every channel which are using as an input or an output  
+    GPIO.setup(led, GPIO.OUT)
+    try:
+        ledflag = int(ledflag)
+    except ValueError:
+        html = "<html><body>别乱玩,请输入0或者1<html><body>"
+        return HttpResponse(html)
+    if   ledflag == 0 :
+        GPIO.output(led, GPIO.LOW)
+        html = "<html><body>led灯已经熄灭,感觉萌萌哒<html><body>"
+    elif ledflag == 1 :
+        html = "<html><body>led灯我帮你点亮啦,记得关灯<html><body>"
+        GPIO.output(led, GPIO.HIGH)
+    else:
+        html = "<html><body>别乱玩,请输入0或者1<html><body>"
+    return HttpResponse(html)
+
+def display_meta(request):
+    values = request.META.items()
+    values.sort()
+    html = []
+    for k, v in values:
+        html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+    return render_to_response('dateapp/display.html', locals())
+ 
 
 
 
