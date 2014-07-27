@@ -2,13 +2,23 @@
 <html lang="ch">
 <head>
     <title>{% block title %}{% endblock %}</title>
+</style>
 </head>
 <body>
-    <h1>Raspberry Pi</h1>
+	{% block h1 %}
+    	<h1 style="text-align:center;text-indent:2em;">
+			<span style="color:#E53333;">RaspberryPi 树莓派小站</span>
+		</h1>
+	{% endblock %}
     {% block content %}{% endblock %}
     {% block footer %}
-    <hr>
-    <p>欢迎来到这个由 Raspberry Pi 搭建的网站</p>
+	<div style="text-align:center;">
+		<span style="line-height:5;">
+			<span style="color:#003399;font-size:16px;">
+				<strong>小站由树莓派强力驱动 感谢Django框架</strong>
+			</span>
+		<span style="color:#003399;font-size:16px;">
+	</div>
     {% endblock %}
 </body>
 </html>

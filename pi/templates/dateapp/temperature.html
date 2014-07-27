@@ -4,9 +4,24 @@
 
 {% block content %}
 <p>现在树莓派CPU的温度是{{ CPUtemperature }}摄氏度.</p>
+ <HEAD>
+ <script type="text/javascript">
+var mytimer = null;  var bar = 0;
+function processbar() {
+    if (bar < {{ CPUtemperature }}) {
+bar++;
+document.getElementById("processbar").style.width = bar + "px";
+mytimer = window.setTimeout("processbar()", 10);
+    }
+}
+    mytimer = window.setTimeout("processbar()", 10);
+ </script>
+ </HEAD>
+<div style="width: 100px; height: 10px; border: solid 1px #ccc; padding: 1px;">
+<div id="processbar" style="background-color: #90EE90; width: 0px; height: 10px;"></div>
+</div>
+<meta http-equiv="refresh" content="3">
+
 {% endblock %}
 
-{% block footer %}
-<hr>
-<p>这是由 Raspberry Pi 搭建的神奇网站</p>
-{% endblock %}
+

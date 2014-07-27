@@ -1,8 +1,43 @@
 {% extends "base.html" %}
 
 {% block title %}欢迎光临{% endblock %}
-
-{% block footer %}
-<hr>
-<p>这是由 Raspberry Pi 搭建的神奇网站</p>
+{% block content %}
+<h2 style="text-indent:2em;">
+	<span style="color:#E56600;font-size:14px;font-family:SimHei;"><span style="font-size:16px;"></span><span style="font-size:16px;">主要功能：</span></span> 
+</h2>
+<ol>
+	<li>
+		<span style="color:#E53333;line-height:1.5;"><a href="http://senneszi.com/time"><span style="color:#E56600;font-size:16px;font-family:SimHei;">时间查询</span></a><span style="color:#E56600;font-size:16px;font-family:SimHei;"> <span style="color:#E53333;">(/time)&nbsp;</span><span style="color:#E53333;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span> 
+	</li>
+	<li>
+		<span style="color:#E53333;line-height:1.5;"><a href="http://senneszi.com/hello"><span style="color:#E56600;font-size:16px;font-family:SimHei;">hello页面</span></a><span style="color:#E53333;font-size:16px;font-family:SimHei;">(/hello)</span></span> 
+	</li>
+	<li>
+		<span><a href="http://senneszi.com/temperature" target="_blank"><span style="color:#E56600;font-size:16px;font-family:SimHei;">树莓派cpu温度</span></a><span style="color:#E53333;font-size:16px;font-family:SimHei;">(/</span><span style="color:#E53333;font-size:16px;font-family:SimHei;">temperature</span><span style="color:#E56600;font-size:16px;font-family:SimHei;"><span style="color:#E53333;">)&nbsp;</span>&nbsp;&nbsp;&nbsp;</span></span> 
+	</li>
+	<li>
+		<span><span style="color:#E56600;font-size:16px;font-family:SimHei;">闰年判断<span style="color:#E53333;">(/check/year/年份(数字))</span> eg：</span><span style="color:#E53333;"><a href="http://senneszi.com/check/year/1992" target="_blank"><span style="font-size:16px;font-family:SimHei;color:#E56600;">1992年</span></a></span></span> 
+	</li>
+	<li>
+		<span><span style="color:#E53333;"><span style="font-family:Simsun;font-size:medium;line-height:normal;"><a href="http://senneszi.com/display" target="_blank"><span style="font-size:16px;font-family:SimHei;color:#E56600;">request.META.items列表</span></a><span style="font-size:16px;font-family:SimHei;color:#E53333;">(/</span><span style="font-size:16px;font-family:SimHei;color:#E53333;">display</span><span style="font-size:16px;font-family:SimHei;color:#E53333;">)</span></span></span></span> 
+	</li>
+	<li>
+		<span><span style="color:#E53333;"><span style="font-family:Simsun;font-size:medium;line-height:normal;"><span style="font-size:16px;font-family:SimHei;color:#E56600;"><a href="http://senneszi.com/search" target="_blank"><span style="color:#E56600;">图书馆搜索</span></a><span style="color:#E53333;">(/search)</span></span></span></span></span> 
+	</li>
+	<li>
+		<p>
+			<span style="font-family:'sans serif', tahoma, verdana, helvetica;font-size:12px;line-height:1.5;"><span style="font-size:16px;font-family:SimHei;color:#E56600;">led控制<span style="color:#E53333;">(/led/0或者1/)</span> eg: </span><a href="http://senneszi.com/led/1" target="_blank"><span style="font-size:16px;font-family:SimHei;color:#E56600;">点亮</span></a><span style="font-size:16px;font-family:SimHei;color:#E56600;"> / </span><a href="http://senneszi.com/led/0" target="_blank"><span style="font-size:16px;font-family:SimHei;color:#E56600;">熄灭</span></a></span> 
+		</p>
+	</li>
+</ol>
+<p style="text-indent:2em;">
+	<br />
+</p>
+<p style="text-indent:2em;">
+	<span> <br />
+</span> 
+</p>
+<p style="text-indent:2em;">
+	<br />
+</p>
 {% endblock %}
